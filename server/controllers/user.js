@@ -72,6 +72,7 @@ async function updateUserRecord(req, res) {
 }
 
 async function userLogin(req, res) {
+  console.log("calaled");
   try {
     const { email, password } = req.body;
 
