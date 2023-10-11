@@ -24,7 +24,7 @@ router.post("/users/login", userLogin);
 router.post("/users/me/logout", isAuthenticated, userLogout);
 router.get("/users/me", isAuthenticated, myProfile);
 router.post("/users/me/update", isAuthenticated, updateUser);
-router.post("/users/me/rating", isAuthenticated, updateUserRecord);
+router.post("/users/me/record", isAuthenticated, updateUserRecord);
 router.delete("/users/me", isAuthenticated, deleteMe);
 
 // Assign Multer for file storage from playload

@@ -1,3 +1,5 @@
+const chalk = require("chalk");
+const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 async function addUser(req, res) {
@@ -19,9 +21,8 @@ async function addUser(req, res) {
     }
 
     const user = new User(req.body);
-    await user.save();
-
     const token = await user.generateAuthToken();
+    await user.save();
 
     console.log(chalk.green("New user has signed up!"));
     res.status(201).send({

@@ -40,27 +40,34 @@ const renderLoginForm = () => {
   const loginForm = loginFormTemplate.content.cloneNode(true).firstElementChild;
   const signUpButton = loginForm.children[1];
 
-  loginForm.addEventListener("submit", (event) => {
+  // add event-listener on submit to call login API
+  loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = document.getElementById("login-form");
     const email = form.firstElementChild.children[0].lastElementChild.value;
     const password = form.firstElementChild.children[1].lastElementChild.value;
 
-    fetch(`${url}users/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        throw new Error(res.json);
-      })
-      .then((data) => {
+    try {
+      const response = await fetch(`${url}users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        // store userDetails and Token for Authorization in localStorage
         window.localStorage.setItem("userData", JSON.stringify(data.user));
         window.localStorage.setItem("userToken", `${data.token}`);
         window.location.href = "./lobby/lobby.html";
-      })
-      .catch((err) => alert("Unable to login."));
+      } else {
+        const result = await response.json();
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Unable to login.");
+    }
   });
 
   signUpButton.addEventListener("click", () => renderSignUpForm());
@@ -74,6 +81,7 @@ const renderSignUpForm = () => {
     signUpFormTemplate.content.cloneNode(true).firstElementChild;
   const cancelButton = signUpForm.children[1];
 
+  //  add event-listener on submit to call user signup API
   signUpForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = document.getElementById("signup-form");
@@ -83,29 +91,32 @@ const renderSignUpForm = () => {
     const email = form.firstElementChild.children[3].lastElementChild.value;
     const password = form.firstElementChild.children[4].lastElementChild.value;
 
-    fetch(`${url}users/signup`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        username,
-        email,
-        password,
-      }),
-    })
-      .then((res) => {
-        if (res.status === 201) return res.json();
-        throw new Error(res);
-      })
-      .then((data) => {
+    try {
+      const response = await fetch(`${url}users/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          username,
+          email,
+          password,
+        }),
+      });
+
+      if (response.status === 201) {
+        const data = await response.json();
         window.localStorage.setItem("userData", JSON.stringify(data.user));
         window.localStorage.setItem("userToken", `${data.token}`);
         window.location.href = "./lobby/lobby.html";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } else {
+        const result = await response.json();
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error during signup. Please try again.");
+    }
   });
 
   cancelButton.addEventListener("click", () => renderLoginForm());
