@@ -3,7 +3,7 @@
 
 ## About
 
-This is a multiplayer checkers game built using Node.js (Express.js) for the backend and HTML, CSS, Javascript for the frontend. It allows players to play checkers with others in real-time.
+This is a multiplayer checkers game built using Node.js (Express.js) for the backend and HTML, CSS, Javascript for the frontend and Socket.IO for real-time communication. It allows players to play checkers with others in real-time.
 
 ## Features
 
@@ -22,7 +22,7 @@ To play the game, visit the [deployment link](insert_deployment_link_here).
 ## Installation
 
 1. Clone this repository.
-2. Navigate to the `public` and `server` directories and run `npm install` to install the dependencies for both the frontend and backend.
+2. Run `npm install` to install the dependencies for both the frontend and backend.
 3. Configure the necessary environment variables for the backend.
 4. Install `env-cmd` using command `npm i -g env-cmd` as its being used to access env variables.
 5. Start the project with `npm run dev`.
