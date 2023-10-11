@@ -50,13 +50,13 @@ body {
 }
 
 .board div:nth-child(-2n + 8),
-.board div:nth-child(8) ~ div:nth-child(-2n + 15),
-.board div:nth-child(16) ~ div:nth-child(-2n + 24),
-.board div:nth-child(24) ~ div:nth-child(-2n + 31),
-.board div:nth-child(32) ~ div:nth-child(-2n + 40),
-.board div:nth-child(40) ~ div:nth-child(-2n + 47),
-.board div:nth-child(48) ~ div:nth-child(-2n + 56),
-.board div:nth-child(56) ~ div:nth-child(-2n + 63) {
+.board div:nth-child(8)~div:nth-child(-2n + 15),
+.board div:nth-child(16)~div:nth-child(-2n + 24),
+.board div:nth-child(24)~div:nth-child(-2n + 31),
+.board div:nth-child(32)~div:nth-child(-2n + 40),
+.board div:nth-child(40)~div:nth-child(-2n + 47),
+.board div:nth-child(48)~div:nth-child(-2n + 56),
+.board div:nth-child(56)~div:nth-child(-2n + 63) {
     background-color: #ba7a3a;
 }
 
@@ -169,6 +169,10 @@ button {
     color: #d9d9d9;
 }
 
+.rotate180 {
+    transform: rotate(180deg);
+}
+
 .draw-modal-yes-button,
 .draw-modal-no-button,
 .game-over-modal-rematch-button,
@@ -180,5 +184,3 @@ button {
     margin: 10px;
     background-color: #d9d9d9;
 }
-
-/* Mobile */
