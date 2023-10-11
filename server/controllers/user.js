@@ -64,7 +64,7 @@ async function updateUserRecord(req, res) {
     await user.save();
     res.send({
       status: 200,
-      record: user.record,
+      rating: user.rating,
       message: "User record updated successfully",
     });
   } catch (err) {
@@ -73,7 +73,6 @@ async function updateUserRecord(req, res) {
 }
 
 async function userLogin(req, res) {
-  console.log("calaled");
   try {
     const { email, password } = req.body;
 

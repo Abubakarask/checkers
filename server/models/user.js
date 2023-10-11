@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema(
       type: Buffer,
       default: fs.readFileSync("assets/images/default-dp.png"),
     },
-    record: {
+    rating: {
       wins: {
         type: Number,
         default: 0,
