@@ -15,9 +15,7 @@ This is a multiplayer checkers game built using Node.js (Express.js) for the bac
 
 ## Demo
 
-You can watch a brief demo video of the game on [Loom](insert_loom_link_here).
-
-To play the game, visit the [deployment link](insert_deployment_link_here).
+To play the game, visit the [deployment link]([insert_deployment_link_here](https://checker-app-szap.onrender.com/)).
 
 ## Installation
 
